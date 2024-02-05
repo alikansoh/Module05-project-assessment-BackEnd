@@ -12,7 +12,7 @@ router.post('/login', Admin.login);
 
 // Protected routes (require authentication)
 // router.use(requireAuth);
-router.get('/',verifyOwner, Admin.getAdmins);
+router.get('/', Admin.getAdmins);
 router.get('/:id', Admin.getAdmin);
 router.put('/:id', Admin.updateAdmin);
 router.delete('/:id', Admin.deleteAdmin);

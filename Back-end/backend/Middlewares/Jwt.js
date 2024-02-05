@@ -27,13 +27,12 @@ export async function verifyOwner(req, res, next) {
 
   let token_split = token.split(" ");
   console.log(token_split);
-  jwt.verify(token_split[1], process.env.SECRET_STRING, (err, decoded) => {
+  Jwt.verify(token_split[1], process.env.JWT_SECRET, (err, decoded) => {
     req.role = decoded.role;
     console.log(decoded);
     if (
       err ||
-      (req.role.toLowerCase() != "Store Owner" &&
-        req.role.toLowerCase() != "registred")
+      (req.role.toLowerCase() != "Store Owner" )
     ) {
       return res.status(403).json({ message: "Failed to authenticate token" });
     }
@@ -51,7 +50,7 @@ export async function verifyRegister(req, res, next) {
 
   let token_split = token.split(" ");
   console.log(token_split);
-  jwt.verify(token_split[1], process.env.SECRET_STRING, (err, decoded) => {
+  Jwt.verify(token_split[1], process.env.JWT_SECRET, (err, decoded) => {
     req.role = decoded.role;
     console.log(decoded);
     if (

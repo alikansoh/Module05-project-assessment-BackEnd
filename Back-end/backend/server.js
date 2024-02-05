@@ -3,11 +3,12 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import multer from 'multer';
-import uploadMiddleware from "./Middlewares/Multer.js"
-import cookieParser from 'cookie-parser';
- import Admin from "./Routes/Admin.js";
-
+import multer from "multer";
+import uploadMiddleware from "./Middlewares/Multer.js";
+import cookieParser from "cookie-parser";
+import Admin from "./Routes/Admin.js";
+import Product from "./Routes/Product.js";
+import Order from "./Routes/Order.js";
 
 dotenv.config();
 
@@ -18,10 +19,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors());
 
-
-
 // Routes
-app.use('/api/admin', Admin);
+app.use("/api/admin", Admin);
+app.use("/api/Product", Product);
+app.use("/api/order", Order);
+
 
 
 mongoose
